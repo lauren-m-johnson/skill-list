@@ -4,4 +4,4 @@ export default function SkillListItem() {
             <li>SkillListItem</li>
         </>
     );
-  }
+}
