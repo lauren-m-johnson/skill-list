@@ -1,7 +1,9 @@
-export default function SkillListItem() {
+import "./SkillListItem.css"
+
+export default function SkillListItem({ skill, index }) {
     return (
-        <>
-            <li>SkillListItem</li>
-        </>
+        <li className="SkillListItem">
+            {skill.name} Level: {skill.level}
+        </li>
     );
 }
