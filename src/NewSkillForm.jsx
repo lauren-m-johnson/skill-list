@@ -4,15 +4,17 @@ import "./NewSkillForm.css"
 
 
 export default function NewSkillForm({ addSkill }) {
-    const [newSkill, setNewSkill] = useState({
+    const initialSkill = {
         name: "",
         level: 3
-    });
+    };
+
+    const [newSkill, setNewSkill] = useState(initialSkill);
 
     function handleAddSkill(evt) {
         evt.preventDefault();
         addSkill(newSkill);
-        setNewSkill("");
+        setNewSkill(initialSkill);
     }
 
     function handleChange(evt) {
