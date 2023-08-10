@@ -1,20 +1,52 @@
+import { useState } from "react";
 import "./NewSkillForm.css"
 
-export default function NewSkillForm() {
+
+
+export default function NewSkillForm({ addSkill }) {
+    const [newSkill, setNewSkill] = useState({
+        name: "",
+        level: 3
+    });
+
+    function handleAddSkill(evt) {
+        evt.preventDefault();
+        addSkill(newSkill);
+        setNewSkill("");
+    }
+
+    function handleChange(evt) {
+        const newSkillData = { ...newSkill, [evt.target.name]: evt.target.value };
+        setNewSkill(newSkillData);
+    }
+
     return (
         <>
-            <form action="" className="NewSkillForm">
+            <form onSubmit={handleAddSkill} className="NewSkillForm">
                 <label htmlFor="input">Skill</label>
-                <input type="text" id="input"></input>
+                <input 
+                type="text" 
+                name="name"
+                value={newSkill.name}
+                onChange={handleChange}
+                placeholder="New Skill"
+                >
+                </input>
                 <label htmlFor="select">Level</label>
-                <select id="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select 
+                id="select" 
+                name="level"
+                value={newSkill.level}
+                onChange={handleChange}
+                placeholder="3"
+                >
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
                 </select>
-                <button>ADD SKILL</button>
+                <button type="submit">ADD SKILL</button>
             </form>
         </>
     );
